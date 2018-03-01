@@ -275,7 +275,7 @@ describe('POST /users/login', (done) => {
               }
 
               User.findById(users[1]._id).then((user) => {
-                  expect(user.tokens[0]).toInclude({
+                  expect(user.tokens[1]).toInclude({
                        access: 'auth',
                        token: res.headers['x-auth']
                   });
@@ -302,7 +302,7 @@ describe('POST /users/login', (done) => {
             }
 
             User.findById(users[1]._id).then((user) => {
-                expect(user.tokens.length).toBe(0);
+                expect(user.tokens.length).toBe(1);
                 done();
             }).catch((e) => done(e));
         });
